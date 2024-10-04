@@ -1,6 +1,6 @@
 # Sobre o Projeto
 
-O Aplicativo Sustentável foi desenvolvido como projeto de conclusão de curso para o curso de Ciência da Computação no Centro Universitário Sagrado Coração em Bauru - SP no ano de 2022, ele foi pensando para ajudar principalmente crianças a se consciêntizar sobre a reciclagem e a sua importância no mundo moderno.
+O Aplicativo Sustentável é um aplicativo Android desenvolvido como projeto de conclusão de curso para o curso de Ciência da Computação no Centro Universitário Sagrado Coração em Bauru - SP no ano de 2022, ele foi pensando para ajudar principalmente crianças a se consciêntizar sobre a reciclagem e a sua importância no mundo moderno.
 
 Neste aplicativo tinhamos a obrigatoriedade de englobar matérias de 3 professores do curso, optei por englobar as matérias de Linguagens de Programação, Banco de Dados e Inteligência Antificial.
 

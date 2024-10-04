@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             x:Class="AppSustentavelMobile.Views.CadastraUsuarioPage"
+             xmlns:viewmodel="clr-namespace:AppSustentavelMobile.ViewModels.ViewModels"
+             BackgroundColor="#121211"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodel:CadastraUsuárioViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="0.25*,*,0.2*" ColumnDefinitions="0.1*,*,0.1*" RowSpacing="0" ColumnSpacing="0">
+
+            <Frame Grid.Row="1" Grid.Column="1" HasShadow="False" BackgroundColor="#FEFEFE" CornerRadius="20" Padding="20,15,20,15">
+                <Grid RowDefinitions="Auto,*,Auto" RowSpacing="0" ColumnSpacing="0">
+                    <Grid RowDefinitions="*,*" RowSpacing="0">
+                        <Image Source="icon_reciclagem.png" />
+
+                        <Label FontSize="14" Text="Insira os dados do usuário" TextColor="#4F4F4F" Grid.Row="1" HorizontalOptions="Center"/>
+                    </Grid>
+
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="0" Grid.Row="1" Margin="0,0,0,15">
+                        <inputLayout:SfTextInputLayout Grid.Row="0" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Nome De Usuário" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                            <Entry Margin="0,5,0,0" Grid.Row="1" Placeholder="Digite o nome de usuário" FontSize="15" BackgroundColor="White" Text="{Binding Usuario.Login}" ReturnType="Next"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout Grid.Row="1" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Nome Completo" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                            <Entry Margin="0,5,0,0" Grid.Row="1" Placeholder="Digite o nome completo" FontSize="15" BackgroundColor="White" Text="{Binding Usuario.NomeCompleto}" ReturnType="Next"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout Grid.Row="2" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Senha" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                            <Entry Margin="0,5,0,0" Grid.Row="1" Placeholder="Digite a senha" IsPassword="True" FontSize="15" BackgroundColor="White" Text="{Binding Usuario.Senha}" ReturnType="Next"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout Grid.Row="3" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Confirme a Senha" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                            <Entry Margin="0,5,0,0" Grid.Row="1" Placeholder="Digite a senha novamente" IsPassword="True" FontSize="15" BackgroundColor="White" Text="{Binding ConfirmacaoSenha}" ReturnType="Next"/>
+                        </inputLayout:SfTextInputLayout>
+                    </Grid>
+
+                    <Button Text="Cadastrar" Command="{Binding CadastrarUsuario}" BackgroundColor="#4F4F4F" TextColor="White" Grid.Row="2" CornerRadius="10" VerticalOptions="Center" Margin="0,0,0,5"/>
+                </Grid>
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

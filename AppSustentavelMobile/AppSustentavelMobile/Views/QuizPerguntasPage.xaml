@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSustentavelMobile.Views.QuizPerguntasPage"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:viewmodel="clr-namespace:AppSustentavelMobile.ViewModels.ViewModels"                          
+             BackgroundColor="#121211"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodel:QuizPerguntasViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="2*,1*,1*,6*" RowSpacing="0" ColumnSpacing="0" Padding="0">
+            <BoxView BackgroundColor="#121211" Grid.RowSpan="2"/>
+
+            <Grid RowSpacing="0" ColumnSpacing="0" Padding="20,20,20,0" ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" 
+                                       FontSize="18" FontAttributes="Bold" TextColor="White" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="QUIZ - PERGUNTA "/>
+                            <Span Text="{Binding PerguntaAtual.Ordem}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="&#xf061;" FontSize="25" FontFamily="FontAwesome6FreeSolid" TextColor="White" Grid.Column="1"
+                                       VerticalTextAlignment="Center" IsVisible="{Binding IsVisibleProxPergunta}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProximaPergunta}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.RowSpan="3" RowSpacing="0" RowDefinitions="*,0.5*" ColumnSpacing="0" Padding="10,0,10,0" Margin="0">
+                <cards:SfCardView BackgroundColor="White" HasShadow="False" CornerRadius="10" Padding="10,40" Margin="0">
+                    <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                           FontSize="30" Margin="0" TextColor="#121211">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text=" &quot;"/>
+                                <Span Text="{Binding PerguntaAtual.Pergunta}"/>
+                                <Span Text="&quot; "/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </cards:SfCardView>
+
+
+                <Grid RowSpacing="0" ColumnSpacing="0" Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="*,*" Padding="0,10">
+                    <cards:SfCardView BackgroundColor="{Binding CorAlternativa1}" HasShadow="False" Margin="0,0,5,5" CornerRadius="10" Padding="5,0">
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="17" TextColor="#121211">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="A) "/>
+                                    <Span Text="{Binding PerguntaAtual.Alterantiva1}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <cards:SfCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelecionaAlternativa}" CommandParameter="1"/>
+                        </cards:SfCardView.GestureRecognizers>
+                    </cards:SfCardView>
+
+                    <cards:SfCardView BackgroundColor="{Binding CorAlternativa2}" HasShadow="False" Grid.Column="1" Margin="5,0,0,5" CornerRadius="10" Padding="5,0">
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="17" TextColor="#121211">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="B) "/>
+                                    <Span Text="{Binding PerguntaAtual.Alterantiva2}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <cards:SfCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelecionaAlternativa}" CommandParameter="2"/>
+                        </cards:SfCardView.GestureRecognizers>
+                    </cards:SfCardView>
+
+                    <cards:SfCardView BackgroundColor="{Binding CorAlternativa3}" HasShadow="False" Grid.Row="1" Margin="0,5,5,0" CornerRadius="10" Padding="5,0">
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="17" TextColor="#121211">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="C) "/>
+                                    <Span Text="{Binding PerguntaAtual.Alterantiva3}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <cards:SfCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelecionaAlternativa}" CommandParameter="3"/>
+                        </cards:SfCardView.GestureRecognizers>
+                    </cards:SfCardView>
+
+                    <cards:SfCardView BackgroundColor="{Binding CorAlternativa4}" HasShadow="False" Grid.Row="1" Grid.Column="1" Margin="5,5,0,0" CornerRadius="10" Padding="5,0">
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="17" TextColor="#121211">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="D) "/>
+                                    <Span Text="{Binding PerguntaAtual.Alterantiva4}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <cards:SfCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelecionaAlternativa}" CommandParameter="4"/>
+                        </cards:SfCardView.GestureRecognizers>
+                    </cards:SfCardView>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

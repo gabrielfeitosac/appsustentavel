@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:local="clr-namespace:AppSustentavelMobile.Utils"
+             xmlns:viewModels="clr-namespace:AppSustentavelMobile.ViewModels.ViewModels" 
+             x:Class="AppSustentavelMobile.Views.MenuInicialPage"
+             x:Name="MenuInicial"
+             NavigationPage.HasNavigationBar="False"
+             Appearing="MenuAppearing"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <viewModels:MenuInicialViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="*" RowSpacing="0" ColumnSpacing="0">
+            <tabView:SfTabView DisplayMode="ImageWithText"                       
+                               VisibleHeaderCount="4"     
+                               EnableSwiping="True"
+                               TabHeaderPosition="Bottom"                                  
+                               EnableRippleAnimation="True"
+                               BackgroundColor="White"
+                               Margin="0,0,0,2"                                                                                
+                               TabHeaderBackgroundColor="White"
+                               ScrollButtonForegroundColor="#121211">
+
+                <tabView:SfTabView.SelectionIndicatorSettings>
+                    <tabView:SelectionIndicatorSettings
+                        Color="White"
+                        Position="Bottom" 
+                        StrokeThickness="2"/>
+                </tabView:SfTabView.SelectionIndicatorSettings>
+
+                <!--Tab Principal (Reciclagem)-->
+                <tabView:SfTabItem Title="Reciclagem"                                    
+                                   IconFont="&#xf1b8;"
+                                   FontIconFontFamily="FontAwesome5FreeSolid"
+                                   FontIconFontSize="22"
+                                   TitleFontSize="12"
+                                   TitleFontColor="#121211"
+                                   FontIconFontColor="#121211"
+                                   SelectionColor="Green">
+                    <tabView:SfTabItem.Content>
+                        <Grid RowDefinitions="2*,1*,1*,6*" RowSpacing="0" ColumnSpacing="0">
+                            <BoxView BackgroundColor="#121211" Grid.RowSpan="2"/>
+
+                            <BoxView BackgroundColor="White" Grid.Row="1" CornerRadius="20,20,0,0"/>
+
+                            <!--Cabeçalho-->
+                            <Grid RowSpacing="0" ColumnSpacing="10" Padding="20,20,20,0" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                                <Label Text="&#xf2bd;" FontSize="45" FontFamily="FontAwesome5FreeSolid" TextColor="White" VerticalTextAlignment="Center"/>
+                                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" 
+                                       FontSize="18" FontAttributes="Bold" TextColor="White" Grid.Column="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Olá, "/>
+                                            <Span Text="{Binding Usuario.NomeCompleto}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="&#xf08b;" FontSize="23" FontFamily="FontAwesome6FreeSolid" TextColor="White" Grid.Column="2"
+                                       VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SairCommand}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                            
+                            <!--Conteúdo da Página-->
+                            <ScrollView Grid.Row="1" Grid.RowSpan="3">
+                                <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" Padding="20,10">
+                                    <Image Source="icon_reciclagem.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" WidthRequest="100" Grid.Row="0"/>
+                                    <Label Text="A importância da reciclagem e sua história" Margin="0" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold" Grid.Row="1"/>
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="2" Text=" Depois das revoluções industriais o mundo descartava o lixo produzido em mares, rios e outros pontos de descarte incorreto, mas depois do século XX se começou a produzir maiores quantidades de lixo, criando uma acumulação imensa do mesmo, a forma que era usada para descarta-lo não iria suportar esse crescimento na produção de lixo, haviam também novos tipos de lixos com o avanço da tecnologia, como o eletrônico, radioativo, hospitalar, entre outros que demoram mais para ser dissolvidos na natureza, sem falar na poluição." TextColor="#4F4F4F" FontSize="18"/>
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="3" Text=" Para diminuir a quantidade de lixo acumulado e reaproveitar os tipos de lixo que seriam possíveis ser reaproveitados surgiu a reciclagem, ela é muito importante nos dias de hoje pelo fato de diminuir o acumulo de lixo e pelo reaproveitamento do plástico por exemplo que é bastante reciclado, também é importante para combater a questão de diminuir a poluição na natureza, em lugares antes usados como depósito de lixo." TextColor="#4F4F4F" FontSize="18"/>
+
+                                    <Label Text="As cores da reciclagem" Margin="0,10,0,0" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold" Grid.Row="4"/>
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="5" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Azul:" TextColor="Blue" FontAttributes="Bold" FontSize="19    "/>
+                                                <Span Text=" Cor que representa o descarte de papel na reciclagem, caso queira descartar papel procure uma lixeira azul" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="6" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Vermelho:" TextColor="Red" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Essa cor representa o descarte de plástico dentro da reciclagem, quando for descartar plástico faça em uma lixeira vermelha" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="7" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Verde:" TextColor="Green" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Cor que representa o descarte de vidro na reciclagem, caso queira descartar vidro procure uma lixeira verde" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="8" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Amarelo:" TextColor="#f5ee1b" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Essa cor representa o descarte de metal dentro da reciclagem, quando for descartar metal faça em uma lixeira amarela" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="9" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Marrom:" TextColor="SaddleBrown" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Cor que representa descarte de resíduos orgânicos" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="10" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Preto:" TextColor="Black" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Essa cor pode ser um pouco desconhecida na reciclagem, mas ela representa o descarte de madeira." TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="11" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Laranja:" TextColor="Orange" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Outra cor não tão conhecida, representa lixo com resíduos perigosos" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="12" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Branco:" TextColor="#4F4F4F" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Cor que representa o descarte de resíduos ambulatoriais e  de serviço de saúde" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="13" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Roxo:" TextColor="Purple" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Descarte de resíduos radioativos" TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="14" FontSize="18">
+                                        <local:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Cinza:" TextColor="Gray" FontAttributes="Bold" FontSize="19"/>
+                                                <Span Text=" Resíduo geral, não reciclável, misturado, ou contaminado não passível de separação " TextColor="#4F4F4F"/>
+                                            </FormattedString>
+                                        </local:CustomLabel.FormattedText>
+                                    </local:CustomLabel>
+
+                                    <Label Text="Pronto pra testar seus conhecimento dentro de um quiz? jogue agora!" Margin="0,10,0,0" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold" Grid.Row="15"/>
+                                    <buttons:SfButton Grid.Row="16" Margin="0,5,0,0" BackgroundColor="Green" CornerRadius="10" Command="{Binding QuizCommand}">
+                                        <buttons:SfButton.Content>
+                                            <Grid ColumnDefinitions="Auto,*" HorizontalOptions="Center" ColumnSpacing="10" RowSpacing="0" Padding="0,5" Margin="0">
+                                                <Label Text="&#xf11b;" FontFamily="FontAwesome6FreeSolid" FontSize="18" TextColor="White" VerticalOptions="Center"/>
+                                                <Label Text="JOGAR" FontAttributes="Bold" Grid.Column="1" FontSize="18" TextColor="White" VerticalOptions="Center"/>
+                                            </Grid>
+                                        </buttons:SfButton.Content>
+                                    </buttons:SfButton>
+                                </Grid>
+                            </ScrollView>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+
+                <!--Tab de Ponto de Coleta-->
+                <tabView:SfTabItem Title="Pontos de Coleta" 
+                                   IconFont="&#xf5a0;"
+                                   FontIconFontFamily="FontAwesome5FreeSolid"
+                                   FontIconFontSize="22"
+                                   TitleFontSize="12"
+                                   TitleFontColor="#121211"
+                                   FontIconFontColor="#121211"
+                                   SelectionColor="Green">
+                    <tabView:SfTabItem.Content>
+                        <Grid RowDefinitions="2*,1*,1*,6*" RowSpacing="0" ColumnSpacing="0" Padding="0">
+                            <BoxView BackgroundColor="#121211" Grid.RowSpan="2"/>
+
+                            <Grid RowSpacing="0" ColumnSpacing="10" Padding="20,20,20,0" ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                                <Label Text="PONTOS DE COLETA" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" 
+                                       FontSize="20" FontAttributes="Bold" TextColor="White"/>
+
+                                <Label Text="&#xf055;" FontSize="23" FontFamily="FontAwesome6FreeSolid" TextColor="White" Grid.Column="1"
+                                       VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AdicionarPontoCommand}"/>
+                                </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+
+                            <BoxView BackgroundColor="White" Grid.Row="1" CornerRadius="20,20,0,0"/>
+                            
+                            <Grid Grid.Row="1" Grid.RowSpan="3" RowDefinitions="Auto" RowSpacing="0" ColumnSpacing="0" Padding="20,10,0,0" Margin="0">
+                                <listView:SfListView ItemsSource="{Binding ListaPontos}" ItemsSourceChangeCachingStrategy="RecycleItems" AutoFitMode="DynamicHeight" SelectionBackgroundColor="Transparent"
+                                                     ItemSpacing="0,0,10,10" Grid.Row="0" Margin="0" IsScrollingEnabled="True" ListViewCachingStrategy="RecycleTemplate">
+                                    <listView:SfListView.HeaderTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" Margin="0,0,10,0">
+                                                    <Label Text="Informações dos pontos de coleta" Margin="0" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold"/>
+
+                                                    <Label Margin="0,10,0,0" Grid.Row="1" Text="O que são Ecopontos?" FontAttributes="Bold" TextColor="#4F4F4F" FontSize="18"/>
+                                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="2" Text="São áreas públicas criadas pela Prefeitura através da Secretaria Municipal do Meio Ambiente para a captação de pequenas quantidades de entulho (até 1m³) dos PEQUENOS GERADORES. Nesses locais o entulho deve ser separado pelo gerador sob orientação do funcionário do local." TextColor="#4F4F4F" FontSize="17"/>
+
+                                                    <Label Margin="0,10,0,0" Grid.Row="3" Text="O que posso e o que não posso levar a um Ecoponto?" FontAttributes="Bold" TextColor="#4F4F4F" FontSize="18"/>
+                                                    <Grid Grid.Row="4" RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto">
+                                                        <Label Text="- Posso Levar" FontAttributes="Bold" TextColor="#4F4F4F" FontSize="18" Grid.Row="0"/>
+                                                        <local:CustomLabel Margin="0,5,0,0" Grid.Row="1" Text="Pequenas quantidades de entulho (até 1m³ a cada 120 dias), Madeira, Plástico, Metal, Vidro, Papel e Papelão, Móveis e Eletrodomésticos." TextColor="#4F4F4F" FontSize="17"/>
+
+                                                        <Label Text="- Não Posso Levar" FontAttributes="Bold" TextColor="#4F4F4F" FontSize="18" Grid.Row="2"/>
+                                                        <local:CustomLabel Margin="0,5,0,0" Grid.Row="3" Text="Grandes quantidades de entulho de construção (mais de 1m³), Lixo doméstico, Lixo hospitalar ou de serviços de saúde (dentistas, clínicas veterinárias, clínicas estéticas etc.) e Lixo industrial." TextColor="#4F4F4F" FontSize="17"/>
+                                                    </Grid>
+
+                                                    <Label Margin="0,10,0,0" Grid.Row="5" Text="Horário de atendimento" FontAttributes="Bold" TextColor="#4F4F4F" FontSize="18"/>
+                                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="6" Text="Segunda a Sábado, das 7 às 19h e aos Domingos e feriados, das 8 às 16h." TextColor="#4F4F4F" FontSize="17"/>
+
+                                                    <Label Margin="0,10,0,0" Grid.Row="7" Text="Ecopontos de Bauru" FontAttributes="Bold" TextColor="#4F4F4F" FontSize="18"/>
+                                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="8" Text="Atualmente existem 8 Ecopontos em Bauru, mas você pode cadastrar pontos de reciclagem abaixo:" TextColor="#4F4F4F" FontSize="17"/>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </listView:SfListView.HeaderTemplate>
+
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Frame HasShadow="False" CornerRadius="10" Margin="0,0,5,0" BackgroundColor="WhiteSmoke" Padding="{Binding PaddingFrameLista}">
+                                                    <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                                        <Image Source="{Binding Foto}" IsVisible="{Binding IsVisibleFotoFromFile}" WidthRequest="50" HorizontalOptions="Start" Grid.RowSpan="2" Margin="0,0,5,0"/>
+
+                                                        <Label Text="{Binding Titulo}" FontSize="16" TextColor="#4F4F4F" Margin="0" Grid.Column="1" TextDecorations="Underline"/>
+                                                        <Label Text="{Binding Endereco}" FontSize="14" TextColor="#4F4F4F" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0"/>
+
+                                                        <Label Text="&#xf3c5;" FontSize="18" FontFamily="FontAwesome5FreeSolid" TextColor="#4F4F4F" VerticalTextAlignment="Center"
+                                                                   Grid.Column="2" Margin="{Binding MarginIconeMaps}">
+                                                            <Label.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding BindingContext.AbrirMapsCommand, Source={x:Reference MenuInicial}}" CommandParameter="{Binding .}" />
+                                                            </Label.GestureRecognizers>
+                                                        </Label>
+                                                    </Grid>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                </listView:SfListView>
+                            </Grid>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+
+                <!--Tab de Vídeos-->
+                <tabView:SfTabItem Title="Vídeos" 
+                                   IconFont="&#xf04b;"
+                                   FontIconFontFamily="FontAwesome5FreeSolid"
+                                   FontIconFontSize="22"
+                                   TitleFontSize="12"
+                                   TitleFontColor="#121211"
+                                   FontIconFontColor="#121211"
+                                   SelectionColor="Green">
+                    <tabView:SfTabItem.Content>
+                        <Grid RowDefinitions="2*,1*,1*,6*" RowSpacing="0" ColumnSpacing="0" Padding="0">
+                            <BoxView BackgroundColor="#121211" Grid.RowSpan="2"/>
+
+                            <Grid RowSpacing="0" ColumnSpacing="0" Padding="20,20,20,0" ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                                <Label Text="VÍDEOS EDUCACIONAIS" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" 
+                                       FontSize="18" FontAttributes="Bold" TextColor="White" Grid.Column="0"/>
+                                <Label Text="&#xf055;" FontSize="23" FontFamily="FontAwesome6FreeSolid" TextColor="White" Grid.Column="1"
+                                       VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AdicionarVideoCommand}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+
+                            <BoxView BackgroundColor="White" Grid.Row="1" CornerRadius="20,20,0,0"/>
+
+                            <Grid Grid.Row="1" Grid.RowSpan="3" RowSpacing="0" RowDefinitions="Auto" ColumnSpacing="0" Padding="0,10,0,0">
+                                <listView:SfListView ItemsSource="{Binding ListaVideos}" ItemsSourceChangeCachingStrategy="RecycleItems" AutoFitMode="DynamicHeight" SelectionBackgroundColor="Transparent"
+                                                     ItemSpacing="0,0,10,10" Margin="0" SelectionMode="None" ItemTapped="AbrirVideo">
+                                    <listView:SfListView.HeaderTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Label Text="Acesse vídeos sobre reciclagem" Margin="20,0,0,0" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold"/>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </listView:SfListView.HeaderTemplate>
+                                    
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Frame Padding="0" HasShadow="False" CornerRadius="10" Margin="15,0,10,0" BackgroundColor="WhiteSmoke">
+                                                    <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*">
+                                                        <Image Source="{Binding ThumbImage}" HorizontalOptions="Fill" VerticalOptions="Center" Aspect="AspectFit" Margin="0" HeightRequest="60"/>
+                                                        <Image Source="playbutton.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" Margin="0"/>
+                                                        <Label Text="{Binding Titulo}" FontSize="18" TextColor="#4F4F4F" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Margin="10,0,0,0" Grid.Column="1"/>
+                                                        <Label Text="{Binding GetImportanciaDescricao}" FontAttributes="Bold" TextColor="{Binding GetImportanciaColor}" Grid.Row="1" Grid.Column="1" 
+                                                               VerticalOptions="Start" HorizontalOptions="End" Margin="0,0,10,5"/>
+                                                        <Label Text="{Binding GetDataFormatada}" TextColor="#4F4F4F" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,0,5"/>
+                                                    </Grid>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                </listView:SfListView>
+                            </Grid>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+
+                <!--Tab de Informações-->
+                <tabView:SfTabItem Title="Informações" 
+                                   IconFont="&#xf05a;"
+                                   FontIconFontFamily="FontAwesome5FreeSolid"
+                                   FontIconFontAttributes="Bold"
+                                   FontIconFontSize="22"
+                                   TitleFontSize="12"
+                                   TitleFontColor="#121211"
+                                   FontIconFontColor="#121211"
+                                   SelectionColor="Green">
+                    <tabView:SfTabItem.Content>
+                        <Grid RowDefinitions="2*,1*,1*,6*" RowSpacing="0" ColumnSpacing="0">
+                            <BoxView BackgroundColor="#121211" Grid.RowSpan="2"/>
+
+                            <Grid RowSpacing="0" ColumnSpacing="10" Padding="20,20,20,0" ColumnDefinitions="*" VerticalOptions="Center">
+                                <Label Text="INFORMAÇÕES DO APLICATIVO" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" 
+                                       FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                            </Grid>
+
+                            <BoxView BackgroundColor="White" Grid.Row="1" CornerRadius="20,20,0,0"/>
+
+                            <ScrollView Grid.Row="1" Grid.RowSpan="3">
+                                <Grid Padding="20,10,20,0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="0" ColumnSpacing="0">
+                                    <Label Text="Sobre o Projeto" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold"/>
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="1" Text="  A sociedade contemporânea com o avanço da tecnologia vem se tornando cada dia mais autônoma e alienada, de forma com que os seres humanos tomem atitudes cada vez mais de forma automática e sem pensar nas consequências geradas por aquela ação. Devido ao grande uso de aparelhos celulares durante o caminhar, muitas vezes nos deparamos com pessoas jogando lixo em locais inapropriados, por isso decidimos desenvolver um aplicativo que una as duas coisas, um sistema mobile capaz de ajudar as pessoas a entender a importância do descarte correto do lixo sem precisar tirar os olhos do celular." TextColor="#4F4F4F" 
+                                           FontSize="18"/>
+
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="2" Text=" Podemos atualmente observar o surgimento de um movimento social que vem tomando força a cada ano, que é o de pessoas buscando cada dia mais e mais, um pouco de conhecimento a respeito de temas que os mesmos ainda não tenham nenhum tipo de aprendizado, ou seja, as poucos nós seres humanos, buscamos evoluir e nos tornarmos pessoas melhores, um dos movimentos mais populares e com grande pauta no século em que vivemos, é a respeito da reciclagem e sustentabilidade, tendo em vista que o planeta Terra está sufocando a cada ano que passa, por isso nós seres humanos temos o dever de querer nos aprofundar e aprender mais a respeito do assunto, para que possamos ajudar o planeta a se reestruturar e torna-lo um ambiente mais saudável, para que o mesmo continue existindo por milhões de anos." TextColor="#4F4F4F" FontSize="18"/>
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="3" Text=" Além do app desenvolvido também se tem a parte do banco de dados, sobre o banco foi pensado em quais seriam as classes utilizadas no projeto para virarem tabelas no banco, modelamos o banco a partir de três tabelas, uma tabela de ponto de coleta onde serão cadastrados os pontos de coleta de lixo, nessa tabela tem os dados de nome do ponto, foto do ponto para exibição no aplicativo,  endereço do ponto para possível integração do Google Maps no aplicativo abrindo o local do ponto, outra tabela presente no banco seria a de vídeos que seria onde seriam cadastrados os vídeos educacionais que seriam exibidos na tela de vídeos, nessa tabela teria as informações de título, link, data do vídeo, nível de importância do vídeo, que poderia ser atribuído pelo usuário e a informação do autor que postou esse vídeo na rede social YouTube, a tabela de usuário também está presente no banco que contém as informações de usuário e senha para possível login no aplicativo, também o nome completo do usuário um controle booleano para verificar se o usuário logado foi salvo ao entrar e a salva que foi salva ao entrar, para ser possível trazer as informações automaticamente na tela de login." TextColor="#4F4F4F" FontSize="18"/>
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="4" Text=" A última tabela, um pouco diferente das anteriores foi a de perguntas do quiz do aplicativo, contendo as informações de ordem para definir a ordem que as perguntas vão aparecer, a pergunta que vai ser exibida em cada questão do quiz, quatro alternativas cadastradas para serem exibidas na tela, uma variável que guarda a posição da alternativa correta da pergunta e por último um controle booleano para verificar se o usuário acertou a pergunta sendo exibida. A modelagem do banco de dados foi feita por um diagrama de classes UML, feito dentro do aplicativo Astah UML, você pode conferir os diagramas abaixo:" TextColor="#4F4F4F" FontSize="18"/>
+                                    <Frame Padding="1" BorderColor="#4F4F4F" Grid.Row="5" Margin="0,5,0,0" HasShadow="False">
+                                        <Image Source="DiagramaDeClasses.png" Aspect="AspectFit" Margin="0" HorizontalOptions="CenterAndExpand"/>
+                                    </Frame>
+                                    <Frame Padding="1" BorderColor="#4F4F4F" Grid.Row="6" Margin="0,10,0,0" HasShadow="False">
+                                        <Image Source="DiagramaDeUso.png" Aspect="AspectFit" Margin="0" HorizontalOptions="CenterAndExpand"/>
+                                    </Frame>
+                                    <local:CustomLabel Margin="0,5,0,0" Grid.Row="7" Text=" Esse projeto foi desenvolvido pelos alunos Gabriel Feitosa Cristovam e Pedro Luciani Davanco como parte da disciplina de Projeto de Computação do curso de Ciências da Computação na instituição de ensino UNISAGRADO, sob a orientação dos professores Elvio Gilberto, Henrique Pachioni e Patrick Caldeira no quesito prático e da professora Paula Poiet Sampedro na parte da escrita do relatório." TextColor="#4F4F4F" FontSize="18"/>
+                                    <Image Source="UNISAGRADO.png" Grid.Row="8" Aspect="AspectFit" HeightRequest="55" Margin="0,5,0,10" HorizontalOptions="End" VerticalOptions="Center"/>
+                                </Grid>
+                            </ScrollView>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+
+            </tabView:SfTabView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

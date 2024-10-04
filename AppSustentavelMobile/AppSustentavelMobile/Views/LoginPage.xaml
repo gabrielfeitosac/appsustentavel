@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSustentavelMobile.Views.LoginPage"   
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:viewmodel="clr-namespace:AppSustentavelMobile.ViewModels.ViewModels"             
+             BackgroundColor="#121211"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodel:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="0.35*,*,0.3*" ColumnDefinitions="0.15*,*,0.15*" RowSpacing="0" ColumnSpacing="0">
+
+            <Frame Grid.Row="1" Grid.Column="1" HasShadow="False" BackgroundColor="#FEFEFE" CornerRadius="20" Padding="20,15">
+                <Grid RowDefinitions="*,Auto,Auto,Auto,Auto" RowSpacing="0" ColumnSpacing="0">
+                    <Grid RowDefinitions="3*,*" RowSpacing="0">
+                        <Image Source="icon_reciclagem.png" HorizontalOptions="Center" VerticalOptions="Center"
+                           HeightRequest="100" WidthRequest="100"/>
+
+                        <Label FontSize="14" Text="Faça login no sistema" TextColor="#4F4F4F" Grid.Row="1" HorizontalOptions="Center"/>
+                    </Grid>
+
+                    <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="0" Grid.Row="2" Margin="0,0,0,15">
+                        <inputLayout:SfTextInputLayout FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Usuário" OutlineCornerRadius="10" IsHintAlwaysFloated="True" ReserveSpaceForAssistiveLabels="False">
+                            <Entry Margin="0" Placeholder="Digite o nome de usuário" FontSize="15" Text="{Binding Login}" ReturnType="Next"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout Grid.Row="1" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0,10,0,0" Padding="0" 
+                                                       InputViewPadding="10,10,0,10" Hint="Senha" OutlineCornerRadius="10" IsHintAlwaysFloated="True" ReserveSpaceForAssistiveLabels="False">
+                            <Grid ColumnDefinitions="*,Auto" Padding="0" ColumnSpacing="5" RowSpacing="0" Margin="0">
+                                <Entry Margin="0" Placeholder="Digite a senha" IsPassword="{Binding IsPasswordSenha}" FontSize="15" Text="{Binding Senha}" ReturnType="Next"/>
+                                <Frame HasShadow="False" Padding="0,0,10,0" BackgroundColor="Transparent" Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="{Binding LabelMostraSenha}" FontFamily="FontAwesome6FreeSolidRegular" TextColor="#4F4F4F" VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center"/>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TrocaIsPasswordSenha}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </Grid>
+                        </inputLayout:SfTextInputLayout>
+
+                        <syncfusion:SfCheckBox Grid.Row="2" Text="Salvar usuário e senha" TextColor="#4F4F4F" UncheckedColor="#4F4F4F" CheckedColor="#4F4F4F" HorizontalOptions="Start"
+                                               Margin="0,5,0,0" Padding="0" IsChecked="{Binding SalvarUsuario}"/>
+                    </Grid>
+
+                    <Button Text="Entrar" BackgroundColor="#4F4F4F" TextColor="White" Grid.Row="3" CornerRadius="10" VerticalOptions="Center" Margin="0,0,0,10" 
+                            Command="{Binding ExecutaLoginCommand}"/>
+
+                    <Label Text="Cadastrar Usuário" HorizontalOptions="Center" FontSize="14" 
+                            TextColor="Black" Grid.Row="4" TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CadastraUsuario}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Frame>
+
+        </Grid>
+        </ContentPage.Content>
+</ContentPage>

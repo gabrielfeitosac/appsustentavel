@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="AppSustentavelMobile.Views.AdicionaVideoPage"
+             xmlns:viewmodel="clr-namespace:AppSustentavelMobile.ViewModels.ViewModels"             
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <viewmodel:AdicionarVideoViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="2*,1*,1*,6*" RowSpacing="0" ColumnSpacing="0">
+            <BoxView BackgroundColor="#121211" Grid.RowSpan="2"/>
+
+            <Grid RowSpacing="0" ColumnSpacing="0" Padding="20,20,20,0" ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                <Label Text="ADICIONAR VÍDEO" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" 
+                                       FontSize="18" FontAttributes="Bold" TextColor="White" Grid.Column="0"/>
+                <Label Text="&#xf0c7;" FontSize="25" FontFamily="FontAwesome6FreeSolidRegular" TextColor="White" Grid.Column="1"
+                                       VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CadastraVideo}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <BoxView BackgroundColor="White" Grid.Row="1" CornerRadius="20,20,0,0"/>
+
+            <Grid Grid.Row="1" Grid.RowSpan="3" RowSpacing="0" RowDefinitions="Auto,*" ColumnSpacing="0" Padding="0,10,5,0" >
+                <Label Text="Insira as informações para adicionar" Margin="20,0,0,0" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold"/>
+
+                <Grid RowSpacing="0" ColumnSpacing="0" Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto, Auto" Padding="20,10,20,0">
+                    <inputLayout:SfTextInputLayout Grid.Row="0" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Título" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                        <Entry Margin="0,5,0,0" FontSize="15" BackgroundColor="White" Text="{Binding Video.Titulo}" ReturnType="Next"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Grid.Row="1" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Link" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                        <Entry Margin="0,5,0,0" FontSize="15" BackgroundColor="White" Text="{Binding Video.Link}" ReturnType="Next"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Grid.Row="2" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Data" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                        <DatePicker Margin="0,5,0,0" FontSize="15" BackgroundColor="White" Format="dd/MM/yyyy" Date="{Binding Video.Data}"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Grid.Row="3" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                   InputViewPadding="10" Hint="Importância do Vídeo" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                        <combobox:SfComboBox Margin="0,5,0,0" BackgroundColor="Transparent" HeightRequest="42" DataSource="{Binding ListaNivelImportancia}"
+                                             SelectedIndex="0" ShowClearButton="False" SelectionChanged="SelecionaImportancia"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Grid.Row="4" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Autor do Vídeo" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                        <Entry Margin="0,5,0,0" FontSize="15" BackgroundColor="White" Text="{Binding Video.AutorVideo}" ReturnType="Next"/>
+                    </inputLayout:SfTextInputLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             x:Class="AppSustentavelMobile.Views.AdicionaPontoPage"
+             xmlns:viewmodel="clr-namespace:AppSustentavelMobile.ViewModels.ViewModels"                          
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <viewmodel:AdicionarPontoViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="2*,1*,1*,6*" RowSpacing="0" ColumnSpacing="0">
+            <BoxView BackgroundColor="#121211" Grid.RowSpan="2"/>
+
+            <Grid RowSpacing="0" ColumnSpacing="0" Padding="20,20,20,0" ColumnDefinitions="*,Auto" VerticalOptions="Center" BackgroundColor="Transparent">
+                <Label Text="ADICIONAR PONTO DE COLETA" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" 
+                                       FontSize="18" FontAttributes="Bold" TextColor="White" Grid.Column="0"/>
+                <Label Text="&#xf0c7;" FontSize="25" FontFamily="FontAwesome6FreeSolidRegular" TextColor="White" Grid.Column="1"
+                                       VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CadastraPonto}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <BoxView BackgroundColor="#FFFFFF" Grid.Row="1" CornerRadius="20,20,0,0"/>
+
+            <ScrollView Grid.Row="1" Grid.RowSpan="3" BackgroundColor="Transparent">
+                <Grid RowSpacing="0" RowDefinitions="Auto,*" ColumnSpacing="0" Padding="0,10,5,0" BackgroundColor="Transparent">
+                <Label Text="Insira as informações para adicionar" Margin="20,0,0,0" TextColor="#4F4F4F" FontSize="18" FontAttributes="Bold"/>
+
+                <Grid RowSpacing="0" ColumnSpacing="0" Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto, Auto" Padding="20,10,20,0">
+                    <inputLayout:SfTextInputLayout Grid.Row="0" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Título" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                            <Entry Margin="0,5,0,0" FontSize="15" BackgroundColor="White" Text="{Binding PontoColeta.Titulo}" ReturnType="Next"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Grid.Row="1" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Endereço" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                            <Entry Margin="0,5,0,0" FontSize="15" BackgroundColor="White" Text="{Binding PontoColeta.Endereco}" ReturnType="Next"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <!--<inputLayout:SfTextInputLayout Grid.Row="2" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                       InputViewPadding="10" Hint="Latitude" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                        <Entry Margin="0,5,0,0" FontSize="15" BackgroundColor="White"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Grid.Row="3" FocusedColor="#4F4F4F" ContainerType="Outlined" UnfocusedColor="#4F4F4F" Margin="0" Padding="0" 
+                                                   InputViewPadding="10" Hint="Longitude" OutlineCornerRadius="10" IsHintAlwaysFloated="True">
+                        <Entry Margin="0,5,0,0" FontSize="15" BackgroundColor="White" />
+                    </inputLayout:SfTextInputLayout>-->
+
+                    <Frame BackgroundColor="White" Padding="10" CornerRadius="10" Grid.Row="4" HasShadow="False" BorderColor="#4F4F4F" 
+                           IsVisible="{Binding IsVisibleCardPadraoFoto}" HeightRequest="100">
+                        <Grid RowDefinitions="*,Auto" ColumnSpacing="0" RowSpacing="0">
+                            <Label Text="&#xf03e;" FontSize="65" HorizontalOptions="Center" FontFamily="FontAwesome6FreeSolid" TextColor="#4F4F4F" VerticalTextAlignment="Center"/>
+                            <Label Text="Clique para adicionar uma foto" HorizontalTextAlignment="Center" FontSize="15" TextColor="#4F4F4F" Grid.Row="1"/>
+                        </Grid>
+                        
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TirarFotoCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame BackgroundColor="White" Padding="0" CornerRadius="10" Grid.Row="4" HasShadow="False" BorderColor="#4F4F4F"
+                           IsVisible="{Binding IsVisibleFoto}" HeightRequest="200">
+                        <Image Source="{Binding PontoColeta.Foto}" Aspect="AspectFit" BackgroundColor="Transparent"/>
+                    </Frame>
+                </Grid>
+            </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
